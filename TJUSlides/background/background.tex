@@ -1,0 +1,45 @@
+%Thanks for Beamer!
+%This file is rectified and refined by:[6G]Azurewind congshen@tju.edu.cn 2016/05
+\usepackage{CJK}
+\usepackage{graphicx,boxedminipage}
+\usepackage{amsmath, amsfonts, epsfig, xspace}
+\usepackage{algorithm,algorithmic}
+\usepackage{pstricks,pst-node}
+\usepackage{multimedia}
+\usepackage[normal,tight,center]{subfigure}
+\setlength{\subfigcapskip}{-.5em}
+\usepackage{beamerthemesplit}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{setspace} % 调整间距
+\graphicspath {{figure/}}%图片所在的目录
+\mode<presentation> {
+\usetheme{Warsaw}
+}
+\colorlet{structure}{blue!85!white}      %  自定义颜色,用“structure”表示 60%蓝色+40%黑色的颜色
+
+\hypersetup{pdfpagemode={FullScreen}} % 默认全屏播放
+\pgfdeclareimage[height=0.7cm]{logo}{tju_logo_new.pdf}
+\logo{\pgfuseimage{logo}}
+
+\setcounter{tocdepth}{2} % 只生成2级目录
+\setcounter{secnumdepth}{2}
+
+\numberwithin{equation}{section} % 公式按章编号
+%\numberwithin{equation}{subsection} % 公式按节编号
+%\numberwithin{figure}{section} % 图片按章编号
+\setbeamertemplate{caption}[numbered] % 图表编号
+\setbeamerfont{caption}{size=\footnotesize} %  图表标题字体大小设置
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 中文环境 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newtheorem{theo}{{定理}} % \begin{theo}  \end{theo}
+\newtheorem{prop}{{命题}}
+\newtheorem{lem}{{引理}}
+\newtheorem{corol}{{推论}}[theorem]
+%\newtheorem{def}{{定义}}
+%\newtheorem{exam}{{例}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 定理命题编号 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{theorems}[numbered]
+\newtheorem{exam}{Example}[section] % 按章编号

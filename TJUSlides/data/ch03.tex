@@ -1,0 +1,166 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Supplement 补充]{Supplement}\label{sec:3}  % add these to see outline in slides
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}%<beamer>
+    \frametitle{\textsc{Supplement}} \vspace{-1.05cm}
+    \begin{multicols}{2}
+    %\begin{figure}
+    \begin{minipage}[t]{0.55\textwidth}
+    \tableofcontents[currentsection,hideallsubsections]
+    % [currentsection,hideallsubsections][sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+    \end{minipage}
+
+    \begin{minipage}[t]{0.55\textwidth}
+    \vspace{0.44cm}
+    \begin{spacing}{1.2} % 调整间距 需要\usepackage{setspace}
+    \begin{itemize}
+    \item\hyperlink{subsec:3-1}{SVM \& RF}
+    \item\hyperlink{subsec:3-2}{Bioconductor}
+    \item\hyperlink{subsec:3-3}{R \& Parallel Computing}
+    \item\hyperlink{subsec:3-4}{Sth.}
+    %\item\hyperlink{subsec:1-4}{EM Spectrum}
+    \end{itemize}
+    \end{spacing}
+    \end{minipage}
+    %\end{figure}
+    \end{multicols}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[SVM \& RF]{SVM \& RF}\label{subsec:3-1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{SVM}
+  支持向量机(Support Vector Machines,SVM)是一种线性和非线性数据分析的分类方法，如线性SVM，非线性SVM，C-SVM(软间隔支持向量机)，$\nu$ -SVM，SVR。
+  \begin{definition}
+    考虑训练集$TR=\{(\mathbf{x}_{i},y_{i}),i=1,\ldots,l\}$，其中$\mathbf{x}_{i}\in\mathbb{R}^d$,$y_{i}\in\{+1,-1\}$。 如果存在$\mathbf{w}\in\mathbb{R}^d$和正数$\varepsilon$，使得对所有正类的下标$i$，有$\mathbf{w}\cdot x_{i} + b \geq\varepsilon$，而对所有负类下标$i$，有
+    $\mathbf{w}\cdot x_{i} + b \leq -\varepsilon$，则称训练集$TR$ 线性可分。
+  \end{definition}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{SVM}
+  在近似线性可分的情形下，线性分类支持向量机的决策函数可描述为：
+\begin{equation}\label{decisionfunction}
+  f(\mathbf{x})=sgn(\mathbf{w}^{*}\cdot\mathbf{x}+b^{*})=sgn(\sum^{l}_{i=1}\alpha^{*}_{i}y_{i}\mathbf{x}_{i}\cdot\mathbf{x}+b^{*})
+\end{equation}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{SVM}
+  \begin{itemize}
+  \item
+      k-折交叉验证(k-fold cross validation)中，首先将数据集大致均分为k个子集，比如k=5,10,20 等。每次将其中一个子集作为测试集，其他的(k-1)个子集合作为训练集，轮流进行。
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{SVM与随机森林(RF)的比较}
+  \begin{figure}
+    \begin{center}
+      \includegraphics[width=6.8cm]{ch3/rf} % 图片名不能以大些字母开头
+    \end{center}
+  \end{figure}
+  \begin{itemize}
+  \item
+  BREIMAN L. Random Forests[J]. Machine Learning, 2001, 45: 5-32.
+  \item
+      黄衍，查伟雄. 随机森林与支持向量机分类性能比较[J].软件，2012年，第33卷，第6期
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Bioconductor]{Bioconductor}\label{subsec:3-2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Bioconductor}
+  \small
+  Bioconductor用结构化的数据来表示生物概念。以慢性淋巴细胞白血病为例，使用聚类方法和主成分分析方法分类观察结果。根据由相关系数矩阵导出的距离矩阵进行聚类。稳定组和恶化分组没能很好分开，这是因为如果总体上两组数据是分开的，那么说明是我们关心的因素起主导作用；如果不是，则可能有其他的主导作用。
+  \begin{figure}
+    \begin{center}
+      \includegraphics[width=6.2cm]{ch3/Rplot04} % 图片名不能以大些字母开头
+    \end{center}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[R \& Parallel Computing]{R \& Parallel Computing}\label{subsec:3-3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{R \& parallel computing}
+  \begin{itemize}
+  \item
+       1 R是运行时解释的(interpreted when begin to run)\\
+       2 R是单线程的(single thread)\\
+       3 R需要将全部数据加载到内存(whole data onto memory)\\
+       4 算法设计影响时间和空间复杂度(algorithm)\pause
+  \item
+       可使用计算机集群执行多个任务(solving:cluster)
+  \item
+       \textit{R High Performance Programming}
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Sth.]{Sth.}\label{subsec:3-4}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{RStudio}
+  \begin{center}
+     %\movie[height=6.1cm,width=10.7cm,poster,autostart,loop]{}{lu40.avi}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{ggplot2}
+  \small
+  R主要支持四套图形系统：基础图形(base)、网格图形(grid)、lattice图形和ggplot2。2005年出现ggplot2，使用grammer of graphics的语言来描述如何画图。以下是图形语法中的各个成分：
+  \begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+    Data & Mapping \\
+    Geometric Object & Aesthitic Property \\
+    Scale & Coordiante \\
+    Statistical Trasfromation & Facet \\
+    Positional adjustment & etc. \\
+    \hline
+  \end{tabular}\\
+  \end{center}
+  \textit{ggplot2:Elegant Graphics for Data Analysis}。
+  \\R的编程标准：https://google-style.googlecode.com/svn/trunk/google-r-style.html
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Template}
+  \LaTeXe template, such as TJU Thesis, TJU Beamer, etc.
+  \begin{itemize}
+  \item
+      https://www.github.com/6gbluewind
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Reference}
+  \begin{itemize}
+  \item
+  多元统计分析-基于R 主编费宇，北京，中国人民大学出版社，2014
+  \item
+  多元数据分析及其R实现，肖枝洪[等]编著，北京，科学出版社，2013
+  \item
+  R in Nutshell,2nd Edition,Joseph Adler,2014.7
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{$\mathscr{Q}\&\mathscr{A}$}
+？\& ！
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Acknowledgement}
+  \begin{figure}
+  \begin{center}
+    \includegraphics[width=10cm]{ch3/thanks}\transdissolve % 图片名不能以大些字母开头
+  \end{center}
+\end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

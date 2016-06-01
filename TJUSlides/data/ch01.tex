@@ -1,0 +1,99 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Introduction 引言]{Introduction}\label{sec:1}  % add these to see outline in slides
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}%<beamer>
+    \frametitle{\textsc{Contents}} \vspace{-1.05cm}
+    \begin{multicols}{2}
+    %\begin{figure}
+    \begin{minipage}[t]{0.55\textwidth}
+    \tableofcontents[currentsection,hideallsubsections]
+    % [currentsection,hideallsubsections][sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+    \end{minipage}
+
+    \begin{minipage}[t]{0.55\textwidth}
+    \vspace{0.44cm}
+    \begin{spacing}{1.2} % 调整间距 需要\usepackage{setspace}
+    \begin{itemize}
+    \item\hyperlink{subsec:1-1}{Concept}
+    \item\hyperlink{subsec:1-2}{Method}
+    %\item\hyperlink{subsec:1-4}{EM Spectrum}
+    \end{itemize}
+    \end{spacing}
+    \end{minipage}
+    %\end{figure}
+    \end{multicols}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Concept 概念]{Concept}\label{subsec:1-1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Concept}\transsplitverticalin
+  \begin{itemize}
+  \item Discriminant analysis is a set of methods and tools used to distinguish between groups of populations $\prod_{j}$ and to determine how to allocate new observations into groups.
+      \\
+      判别分析是在已知样品分类的前提下，将给定的新样品按照某种分类准则判入某个类中，它是研究如何将个体"归类"的一种统计分析方法。
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Method 方法]{Method}\label{subsec:1-2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Distance}\transsplitverticalin
+  \begin{itemize}
+  \item 距离是判别分析中的基本概念，距离判别法根据一个样品与各个类别距离的远近对该样品所属类别进行判定。常用的距离有欧式距离和马氏距离。\pause
+  \item \begin{equation*}
+      d(\mathbf{x},\mathbf{y}) = \sqrt{(\mathbf{x}-\mathbf{y})^{T}
+      \boldsymbol{\Sigma}^{-1}(\mathbf{x}-\mathbf{y})}
+    \end{equation*}
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Distance}\transsplitverticalin
+  \begin{itemize}
+  \item 距离类型的选择：
+  \item 在判别分析中，马氏距离更常用。例如，$\mathbf{x}$到$G_{2}$的欧式距离小于到$G_{1}$的，但是$x$包含在总体$G_{1}$的置信域内，则把$\mathbf{x}$判入总体$G_{1}$。
+   %leave out the \pause on the final item
+  \end{itemize}
+    两总体判别的判别函数为：
+  \begin{equation}\label{disjus}
+    \mathbf{W}^{*}(\mathbf{x})=d^{2}(\mathbf{x},\boldsymbol{\mu}_{2})-d^{2}(\mathbf{x},\boldsymbol{\mu}_{1})
+  \end{equation}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Bayes}\transsplitverticalin
+  \begin{itemize}
+  \item Bayes判别对多个总体的判别考虑的不只是建立判别式，还要计算新样品属于各总体的条件概率$p(j/x),j=1,2,\cdots k$。 比较这$k$个概率的大小，然后将新样品判归为来自概率最大的总体。Bayes判别准则是以个体归属于某类的概率最大或者错判总平均损失最小为标准的。
+   %leave out the \pause on the final item
+  \end{itemize}
+  设有$k$个总体，各自分布密度函数为$f_{j}(\mathbf{x})$，判别准则为：
+  \begin{equation}\label{bayes}
+    R_{i}=\{\mathbf{x}|p_{i}f_{i}(\mathbf{x})=\max_{1\leq j\leq k}p_{j}f_{j}(\mathbf{x})\}，i=1,2,\ldots,k
+  \end{equation}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Fisher}\transsplitverticalin
+  \begin{itemize}
+  \item Fisher判别准则要求各类别之间的变异尽可能地大，而各类内部的变异尽可能地小，变异用离均差平方和表示。
+   %leave out the \pause on the final item
+  \end{itemize}
+  \begin{equation}\label{fisher}
+    \mu_{y}=\frac{1}{2}(\mu_{1y}+\mu_{2y})=\frac{1}{2}(\boldsymbol{\mu}_{1}-\boldsymbol{\mu}_{2})^{T}\boldsymbol{\Sigma}^{-1}(\boldsymbol{\mu}_{1}+\boldsymbol{\mu}_{2})
+  \end{equation}
+  记\begin{equation}\label{fisher}
+    W(\mathbf{x})=(\boldsymbol{\mu}_{1}-\boldsymbol{\mu}_{2})^{T}\boldsymbol{\Sigma}^{-1}\mathbf{x}-\mu_{y}
+  \end{equation}
+  则判别函数等价于
+  \begin{displaymath}
+  \left\{ \begin{array}{ll}
+x\in G_{1} & \textrm{if $W(\mathbf{x})\geq0$}\\
+x\in G_{2} & \textrm{if $W(\mathbf{x})<0$}
+\end{array}\right.
+\end{displaymath}
+\end{frame}

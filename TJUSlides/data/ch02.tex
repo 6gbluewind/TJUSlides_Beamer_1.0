@@ -1,0 +1,116 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Assignment 作业题]{Assignment}\label{sec:2}  % add these to see outline in slides
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}%<beamer>
+    \frametitle{\textsc{Contents}} \vspace{-1.05cm}
+    \begin{multicols}{2}
+    %\begin{figure}
+    \begin{minipage}[t]{0.55\textwidth}
+    \tableofcontents[currentsection,hideallsubsections]
+    % [currentsection,hideallsubsections][sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+    \end{minipage}
+
+    \begin{minipage}[t]{0.55\textwidth}
+    \vspace{0.44cm}
+    \begin{spacing}{1.2} % 调整间距 需要\usepackage{setspace}
+    \begin{itemize}
+    \item\hyperlink{subsec:2-1}{Question}
+    \item\hyperlink{subsec:2-2}{Data}
+    \item\hyperlink{subsec:2-3}{Program}
+    \item\hyperlink{subsec:2-3}{Result}
+    %\item\hyperlink{subsec:1-4}{EM Spectrum}
+    \end{itemize}
+    \end{spacing}
+    \end{minipage}
+    %\end{figure}
+    \end{multicols}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Exercise]{Exercise}\label{subsec:2-1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Question}
+  \begin{itemize}
+  \item
+  题目8.1：根据经验，今天与昨天的湿度差$X_{1}$及今天的压温差(气压与温度之差)$X_{2}$是预报明天下雨或不下雨的两个重要因素。现有一批数据资料，今测得$x_{1}=8.1$，$x_{2}=2.0$，试问预报明天下雨还是预报明天不下雨？分别用距离判别、Bayes判别和Fisher判别来得到所需要的结论。
+
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Data]{Data}\label{subsec:2-2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Data}
+{\footnotesize
+\begin{table}
+%\rowcolors{1}{blue!20}{blue!10} \arrayrulecolor{blue!5}
+\tabcolsep 4pt % 列间距
+\renewcommand\arraystretch{1.1} % 行间距
+\caption{湿度差和压温差表}\label{tab:EU_band}
+  \begin{center}
+    \setlength{\arrayrulewidth}{1.3pt}
+    \resizebox{7cm}{!}{
+    \begin{tabular}{|c|c|c|c|}%{\temptablewidth}{@{\extracolsep{\fill}}|c|c|c|c|c|}
+        %\arrayrulecolor{black}\hline
+        %\rowcolor{blue!50}
+        \hline
+        \multicolumn{2}{|c|}{雨天} & \multicolumn{2}{c|}{雨天}\\
+        \hline
+        X1(湿度差) & X2(压温差) & X1(湿度差) & X2(压温差)\\
+        \hline
+        -1.9 & 3.2 & 0.2 & 0.2\\
+        \hline
+        -6.9 & 10.4 & -0.1 & 7.5\\
+        \hline
+        5.2 & 2 & 0.4 & 14.6\\
+        \hline
+        5 & 2.5 & 2.7 & 8.3\\
+        \hline
+        7.3 & 0 & 2.1 & 0.8\\
+        \hline
+        6.8 & 12.7 & -4.6 & 4.3\\
+        \hline
+        0.9 & -15.4 & -1.7 & 10.9\\
+        \hline
+        -12.5 & -2.5 & -2.6 & 13.1\\
+        \hline
+        1.5 & 1.3 & 2.6 & 12.8\\
+        \hline
+        3.8 & 6.8 & -2.8 & 10\\
+        \hline
+    \end{tabular} }
+  \end{center}
+
+\end{table}
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Program]{Program}\label{subsec:2-3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Program}
+  \begin{itemize}
+  \item
+  (1)读入数据表，解析变量，绘制散点图。
+  $X=read.table("weatherdata.txt",header=T)$\\
+  $attach(X)$ \#解析变量\\
+  $plot(x1,x2);$\\
+  $text(x1,x2,G,adj=-0.8)$\\
+  ~\\
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Result]{Result}\label{subsec:2-4}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Result}
+  \begin{itemize}
+  \item
+  从散点图上可以看出，下雨的天数集中在湿度差较小的日子；
+可见两类错判的各有1例，判对的共有18例，故判别符合率为18/20=90.0\%。线性判别函数\\
+$y=-0.07263524x_{1}+0.14811860x_{2}$。
+
+  \end{itemize}
+\end{frame}

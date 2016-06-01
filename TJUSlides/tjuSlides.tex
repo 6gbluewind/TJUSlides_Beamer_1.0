@@ -1,0 +1,36 @@
+\documentclass[CJK]{beamer}
+\include{background/background}
+
+\author[Name]{Name
+\\ {\scriptsize Email: Name@tju.edu.cn}}
+
+\title[Title\hspace{2em}\insertframenumber/\inserttotalframenumber]{\textsc{Title}}
+\subtitle[subtitle\hspace{1em}]{subtitle}
+
+\institute{School or College,Tianjin University(Peiyang University)}
+\date{\scriptsize{\today}} %leave out for today's date to be insterted
+
+\begin{document}
+\begin{CJK}{GBK}{kai}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} % ∑‚√Ê
+  \vspace{0.5cm}
+  \titlepage
+  \hypertarget{beginning}{}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{\textsc{Contents}} \vspace{-0.3cm}
+  \tableofcontents[hidesubsections]
+  % You might wish to add the option[pausesections,subsection]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{data/ch01}
+\include{data/ch02}
+\include{data/ch03}
+
+\end{CJK}
+\end{document}
